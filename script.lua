@@ -52,7 +52,7 @@ coroutine.wrap(CCNX_fake_script)()
 local function PLJNN_fake_script() -- Button.loop.tp 
 	local script = Instance.new('LocalScript', Button)
 
-	local textButton = script.Parent  -- Veronderstel dat de TextButton zich in hetzelfde object bevindt als het script
+	local textButton = script.Parent
 	local isRunning = false
 	
 	textButton.MouseButton1Click:Connect(function()
@@ -61,9 +61,9 @@ local function PLJNN_fake_script() -- Button.loop.tp
 				isRunning = true
 				while isRunning and textButton.Text == "on" do
 					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-8.05339909, 464.527893, 31.5693302, 0.490018576, 4.31568949e-08, 0.871711969, 2.26567209e-08, 1, -6.2244311e-08, -0.871711969, 5.02510034e-08, 0.490018576)
-					wait(5)-- Voer hier de lus uit
+					wait(5)
 					print("Lus loopt...")
-					wait(1)  -- Voeg een kleine pauze toe om te voorkomen dat de lus te snel loopt
+					wait(1)
 				end
 			else
 				isRunning = false
