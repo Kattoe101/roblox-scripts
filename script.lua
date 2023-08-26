@@ -1,4 +1,10 @@
--- Gui to Lua
+local plr = game.Players.LocalPlayer
+local id = tonumber(game.GameId)
+local target = 734159876
+
+if id == 321279858 then
+	print("loaded!!")
+	-- Gui to Lua
 -- Version: 3.2
 
 -- Instances:
@@ -153,3 +159,7 @@ local function LBSG_fake_script() -- sbautofarm.preventkick
 	end)
 end
 coroutine.wrap(LBSG_fake_script)()
+
+	else
+		game:GetService("TeleportService"):Teleport(target, plr)
+end
