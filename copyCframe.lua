@@ -3,6 +3,7 @@
 -- a gui for roblox that copies your camera frame when you press a button
 -- created: 16-12-2022
 -- updated: 27-08-2023
+-- original: https://github.com/Kattoe101/CopyCframe/blob/main/.lua
 
 
 -- Instances:
