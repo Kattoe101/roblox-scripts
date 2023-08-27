@@ -1,7 +1,8 @@
--- made by kattoe
--- if u have any questions you can add me on discord (kattoe)
--- Gui to Lua
--- Version: 3.2
+-- made by kattoe101 (github)
+-- if u have any questions, suggestions or feedback you can dm me on discord (kattoe)
+-- an autofarm gui for roblox sharkbite
+-- created: 23-08-2023
+-- updated: 27-08-2023
 
 -- Instances:
 
