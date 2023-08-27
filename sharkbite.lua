@@ -1,3 +1,5 @@
+-- made by kattoe
+-- if u have any questions you can add me on discord (kattoe)
 -- Gui to Lua
 -- Version: 3.2
 
