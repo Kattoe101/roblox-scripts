@@ -1,10 +1,4 @@
-local plr = game.Players.LocalPlayer
-local id = tonumber(game.GameId)
-local target = 734159876
-
-if id == 321279858 then
-	print("loaded!!")
-	-- Gui to Lua
+-- Gui to Lua
 -- Version: 3.2
 
 -- Instances:
@@ -13,6 +7,7 @@ local sbautofarm = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
 local OnOff = Instance.new("TextButton")
 local TeethReceived = Instance.new("TextLabel")
+local teeth = Instance.new("TextLabel")
 
 --Properties:
 
@@ -25,7 +20,6 @@ Frame.BackgroundColor3 = Color3.fromRGB(235, 152, 35)
 Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 Frame.Position = UDim2.new(0.398950398, 0, 0.443817794, 0)
 Frame.Size = UDim2.new(0, 228, 0, 47)
-Frame.ZIndex = 999999999
 
 OnOff.Name = "On/Off"
 OnOff.Parent = Frame
@@ -33,7 +27,6 @@ OnOff.BackgroundColor3 = Color3.fromRGB(226, 212, 20)
 OnOff.BorderColor3 = Color3.fromRGB(0, 0, 0)
 OnOff.Position = UDim2.new(0.0419273973, 0, 0.15639253, 0)
 OnOff.Size = UDim2.new(0, 54, 0, 32)
-OnOff.ZIndex = 999999999
 OnOff.Font = Enum.Font.SourceSans
 OnOff.Text = "off"
 OnOff.TextColor3 = Color3.fromRGB(0, 0, 0)
@@ -50,9 +43,21 @@ TeethReceived.Text = "Teeth received: 0"
 TeethReceived.TextColor3 = Color3.fromRGB(0, 0, 0)
 TeethReceived.TextSize = 18.000
 
+teeth.Name = "teeth"
+teeth.Parent = TeethReceived
+teeth.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+teeth.BorderColor3 = Color3.fromRGB(0, 0, 0)
+teeth.BorderSizePixel = 0
+teeth.Position = UDim2.new(0, -3, 0.312000006, 0)
+teeth.Visible = false
+teeth.Font = Enum.Font.SourceSans
+teeth.Text = ""
+teeth.TextColor3 = Color3.fromRGB(0, 0, 0)
+teeth.TextSize = 14.000
+
 -- Scripts:
 
-local function ABMOYPF_fake_script() -- OnOff.on/off 
+local function GGCVHPV_fake_script() -- OnOff.on/off 
 	local script = Instance.new('LocalScript', OnOff)
 
 	local afk = script.Parent.Text
@@ -66,10 +71,13 @@ local function ABMOYPF_fake_script() -- OnOff.on/off
 	end)
 	
 end
-coroutine.wrap(ABMOYPF_fake_script)()
-local function TWCWXCS_fake_script() -- OnOff.loop.tp 
+coroutine.wrap(GGCVHPV_fake_script)()
+local function XQTG_fake_script() -- OnOff.loop.tp 
 	local script = Instance.new('LocalScript', OnOff)
 
+	local Players = game:GetService("Players")
+	local Teams = game:GetService("Teams")
+	local LocalPlayer = Players.LocalPlayer
 	local textButton = script.Parent
 	local isRunning = false
 	
@@ -78,6 +86,9 @@ local function TWCWXCS_fake_script() -- OnOff.loop.tp
 			if not isRunning then
 				isRunning = true
 				while isRunning and textButton.Text == "on" do
+				--	if LocalPlayer.Team == Teams.Shark then
+				--		LocalPlayer.Character.Humanoid.Health = 0
+				--	end
 					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-8.05339909, 464.527893, 31.5693302, 0.490018576, 4.31568949e-08, 0.871711969, 2.26567209e-08, 1, -6.2244311e-08, -0.871711969, 5.02510034e-08, 0.490018576)
 					wait(4)
 				end
@@ -87,24 +98,23 @@ local function TWCWXCS_fake_script() -- OnOff.loop.tp
 		end
 	end)
 end
-coroutine.wrap(TWCWXCS_fake_script)()
-local function KAHKZ_fake_script() -- TeethReceived.LocalScript 
+coroutine.wrap(XQTG_fake_script)()
+local function GBKIDZ_fake_script() -- TeethReceived.teethreceivedscript 
 	local script = Instance.new('LocalScript', TeethReceived)
 
-	local TextLabel = game:GetService("Players").LocalPlayer.PlayerGui.CoreGuis.Coins.Scorebox.TextLabel
+	local TotalTeeth = game:GetService("Players").LocalPlayer.PlayerGui.CoreGuis.Coins.Scorebox.TextLabel
+	local StartTeeth = script.Parent.teeth
 	local label = script.Parent
-	local received = 0
 	
 	local function onTextChanged()
-		received = received + 10
-		label.Text = ("Teeth received: ".. received)
+		label.Text = "Teeth received: "..TotalTeeth.Text - StartTeeth.Rotation
 	end
 	
-	TextLabel.Changed:Connect(onTextChanged)
+	TotalTeeth.Changed:Connect(onTextChanged)
 	
 end
-coroutine.wrap(KAHKZ_fake_script)()
-local function EADCMMI_fake_script() -- sbautofarm.draggable 
+coroutine.wrap(GBKIDZ_fake_script)()
+local function UCNWUA_fake_script() -- sbautofarm.draggable 
 	local script = Instance.new('LocalScript', sbautofarm)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -146,8 +156,8 @@ local function EADCMMI_fake_script() -- sbautofarm.draggable
 		end
 	end)
 end
-coroutine.wrap(EADCMMI_fake_script)()
-local function LBSG_fake_script() -- sbautofarm.preventkick 
+coroutine.wrap(UCNWUA_fake_script)()
+local function SNYGGNM_fake_script() -- sbautofarm.preventkick 
 	local script = Instance.new('LocalScript', sbautofarm)
 
 	local vu = game:GetService("VirtualUser")
@@ -158,8 +168,24 @@ local function LBSG_fake_script() -- sbautofarm.preventkick
 		vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 	end)
 end
-coroutine.wrap(LBSG_fake_script)()
+coroutine.wrap(SNYGGNM_fake_script)()
+local function LHRNO_fake_script() -- sbautofarm.teethscript 
+	local script = Instance.new('LocalScript', sbautofarm)
 
-	else
-		game:GetService("TeleportService"):Teleport(target, plr)
+	wait(1)
+	script.Parent.Frame.TeethReceived.teeth.Rotation = game:GetService("Players").LocalPlayer.PlayerGui.CoreGuis.Coins.Scorebox.TextLabel.Text
+	wait(1)
+	script:Destroy()
+	
 end
+coroutine.wrap(LHRNO_fake_script)()
+local function CHPXZUQ_fake_script() -- sbautofarm.reset 
+	local script = Instance.new('LocalScript', sbautofarm)
+
+	local Players = game:GetService("Players")
+	local LocalPlayer = Players.LocalPlayer
+	local Teams = game:GetService("Teams")
+	
+	
+end
+coroutine.wrap(CHPXZUQ_fake_script)()
