@@ -1,7 +1,8 @@
 -- made by kattoe
--- if u have any questions you can add me on discord (kattoe)
--- Gui to Lua
--- Version: 3.2
+-- if u have any questions, suggestions or feedback you can add me on discord (kattoe)
+-- created: 23-08-2023
+-- updated: 27-08-2023
+
 
 -- Instances:
 
