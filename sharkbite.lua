@@ -2,7 +2,8 @@
 -- if u have any questions, suggestions or feedback you can dm me on discord (kattoe)
 -- an autofarm gui for roblox sharkbite
 -- created: 23-08-2023
--- updated: 27-08-2023
+-- updated: 28-08-2023
+
 
 -- Instances:
 
@@ -11,6 +12,7 @@ local Frame = Instance.new("Frame")
 local OnOff = Instance.new("TextButton")
 local TeethReceived = Instance.new("TextLabel")
 local teeth = Instance.new("TextLabel")
+local Webhook = Instance.new("TextBox")
 
 --Properties:
 
@@ -21,14 +23,14 @@ sbautofarm.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 Frame.Parent = sbautofarm
 Frame.BackgroundColor3 = Color3.fromRGB(235, 152, 35)
 Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Frame.Position = UDim2.new(0.398950398, 0, 0.443817794, 0)
-Frame.Size = UDim2.new(0, 228, 0, 47)
+Frame.Position = UDim2.new(0.405108035, 0, 0.443817794, 0)
+Frame.Size = UDim2.new(0, 222, 0, 85)
 
 OnOff.Name = "On/Off"
 OnOff.Parent = Frame
 OnOff.BackgroundColor3 = Color3.fromRGB(255, 219, 12)
 OnOff.BorderColor3 = Color3.fromRGB(0, 0, 0)
-OnOff.Position = UDim2.new(0.0419273973, 0, 0.15639253, 0)
+OnOff.Position = UDim2.new(0.0297019891, 0, 0.0731194019, 0)
 OnOff.Size = UDim2.new(0, 54, 0, 32)
 OnOff.Font = Enum.Font.SourceSans
 OnOff.Text = "off"
@@ -39,12 +41,13 @@ TeethReceived.Name = "TeethReceived"
 TeethReceived.Parent = Frame
 TeethReceived.BackgroundColor3 = Color3.fromRGB(255, 219, 12)
 TeethReceived.BorderColor3 = Color3.fromRGB(0, 0, 0)
-TeethReceived.Position = UDim2.new(0.320103705, 0, 0.156392843, 0)
-TeethReceived.Size = UDim2.new(0, 146, 0, 32)
+TeethReceived.Position = UDim2.new(0.306741923, 0, 0.090133667, 0)
+TeethReceived.Size = UDim2.new(0, 146, 0, 30)
 TeethReceived.Font = Enum.Font.SourceSans
 TeethReceived.Text = "Teeth received: 0"
 TeethReceived.TextColor3 = Color3.fromRGB(0, 0, 0)
 TeethReceived.TextSize = 18.000
+TeethReceived.TextWrapped = true
 
 teeth.Name = "teeth"
 teeth.Parent = TeethReceived
@@ -58,9 +61,24 @@ teeth.Text = ""
 teeth.TextColor3 = Color3.fromRGB(0, 0, 0)
 teeth.TextSize = 14.000
 
+Webhook.Name = "Webhook"
+Webhook.Parent = Frame
+Webhook.BackgroundColor3 = Color3.fromRGB(255, 219, 12)
+Webhook.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Webhook.Position = UDim2.new(0.0294249933, 0, 0.545426667, 0)
+Webhook.Size = UDim2.new(0, 209, 0, 31)
+Webhook.ClearTextOnFocus = false
+Webhook.Font = Enum.Font.SourceSans
+Webhook.PlaceholderColor3 = Color3.fromRGB(193, 162, 9)
+Webhook.PlaceholderText = "Webhook url:"
+Webhook.Text = ""
+Webhook.TextColor3 = Color3.fromRGB(0, 0, 0)
+Webhook.TextSize = 14.000
+Webhook.TextWrapped = true
+
 -- Scripts:
 
-local function XMWDI_fake_script() -- OnOff.on/off 
+local function SRCX_fake_script() -- OnOff.on/off 
 	local script = Instance.new('LocalScript', OnOff)
 
 	local afk = script.Parent.Text
@@ -74,8 +92,8 @@ local function XMWDI_fake_script() -- OnOff.on/off
 	end)
 	
 end
-coroutine.wrap(XMWDI_fake_script)()
-local function PCSV_fake_script() -- OnOff.loop.tp 
+coroutine.wrap(SRCX_fake_script)()
+local function WVFCK_fake_script() -- OnOff.loop.tp 
 	local script = Instance.new('LocalScript', OnOff)
 
 	local textButton = script.Parent
@@ -96,8 +114,8 @@ local function PCSV_fake_script() -- OnOff.loop.tp
 	end)
 	
 end
-coroutine.wrap(PCSV_fake_script)()
-local function KSXGJWG_fake_script() -- TeethReceived.teethreceivedscript 
+coroutine.wrap(WVFCK_fake_script)()
+local function KCRXYTS_fake_script() -- TeethReceived.teethreceivedscript 
 	local script = Instance.new('LocalScript', TeethReceived)
 
 	local TotalTeeth = game:GetService("Players").LocalPlayer.PlayerGui.CoreGuis.Coins.Scorebox.TextLabel
@@ -111,8 +129,37 @@ local function KSXGJWG_fake_script() -- TeethReceived.teethreceivedscript
 	TotalTeeth.Changed:Connect(onTextChanged)
 	
 end
-coroutine.wrap(KSXGJWG_fake_script)()
-local function ZVWD_fake_script() -- sbautofarm.draggable 
+coroutine.wrap(KCRXYTS_fake_script)()
+local function BMPP_fake_script() -- Webhook.webhookscript 
+	local script = Instance.new('LocalScript', Webhook)
+
+	script.Parent.Parent.TeethReceived:GetPropertyChangedSignal("Text"):Connect(function()
+		local TotalTeeth = game:GetService("Players").LocalPlayer.PlayerGui.CoreGuis.Coins.Scorebox.TextLabel
+		local StartTeeth = script.Parent.Parent.TeethReceived.teeth
+		local url = script.Parent.Text
+		local data = {
+			["embeds"] = {
+				{
+					["title"] = "received teeth: "..TotalTeeth.Text - StartTeeth.Rotation,
+					["description"] = "total teeht: "..TotalTeeth.Text,
+					["type"] = "rich",
+					["color"] = tonumber(0x7269da)
+				}
+			}
+		}
+		local newdata = game:GetService("HttpService"):JSONEncode(data)
+	
+		local headers = {
+			["content-type"] = "application/json"
+		}
+		request = http_request or request or HttpPost or syn.request
+		local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
+		request(abcdef)
+	end)
+	
+end
+coroutine.wrap(BMPP_fake_script)()
+local function QOBKWN_fake_script() -- sbautofarm.draggable 
 	local script = Instance.new('LocalScript', sbautofarm)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -154,8 +201,8 @@ local function ZVWD_fake_script() -- sbautofarm.draggable
 		end
 	end)
 end
-coroutine.wrap(ZVWD_fake_script)()
-local function GSZDSN_fake_script() -- sbautofarm.preventkick 
+coroutine.wrap(QOBKWN_fake_script)()
+local function EBXKHA_fake_script() -- sbautofarm.preventkick 
 	local script = Instance.new('LocalScript', sbautofarm)
 
 	local vu = game:GetService("VirtualUser")
@@ -166,8 +213,8 @@ local function GSZDSN_fake_script() -- sbautofarm.preventkick
 		vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 	end)
 end
-coroutine.wrap(GSZDSN_fake_script)()
-local function NMIYNS_fake_script() -- sbautofarm.teethscript 
+coroutine.wrap(EBXKHA_fake_script)()
+local function ESOQL_fake_script() -- sbautofarm.teethscript 
 	local script = Instance.new('LocalScript', sbautofarm)
 
 	wait(1)
@@ -176,4 +223,4 @@ local function NMIYNS_fake_script() -- sbautofarm.teethscript
 	script:Destroy()
 	
 end
-coroutine.wrap(NMIYNS_fake_script)()
+coroutine.wrap(ESOQL_fake_script)()
