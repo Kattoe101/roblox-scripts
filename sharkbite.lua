@@ -1,6 +1,6 @@
+-- an autofarm gui for roblox sharkbite
 -- made by kattoe101 (github)
 -- if u have any questions, suggestions or feedback you can dm me on discord (kattoe)
--- an autofarm gui for roblox sharkbite
 -- created: 23-08-2023
 -- updated: 28-08-2023
 
