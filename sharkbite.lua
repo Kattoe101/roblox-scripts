@@ -23,15 +23,15 @@ sbautofarm.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 Frame.Parent = sbautofarm
 Frame.BackgroundColor3 = Color3.fromRGB(235, 152, 35)
 Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Frame.Position = UDim2.new(0.405108035, 0, 0.443817794, 0)
-Frame.Size = UDim2.new(0, 222, 0, 85)
+Frame.Position = UDim2.new(0.398121893, 0, 0.380138546, 0)
+Frame.Size = UDim2.new(0, 230, 0, 87)
 
 OnOff.Name = "On/Off"
 OnOff.Parent = Frame
 OnOff.BackgroundColor3 = Color3.fromRGB(255, 219, 12)
 OnOff.BorderColor3 = Color3.fromRGB(0, 0, 0)
-OnOff.Position = UDim2.new(0.0297019891, 0, 0.0731194019, 0)
-OnOff.Size = UDim2.new(0, 54, 0, 32)
+OnOff.Position = UDim2.new(0.0450000018, -2, 0.100000001, 0)
+OnOff.Size = UDim2.new(0, 50, 0, 30)
 OnOff.Font = Enum.Font.SourceSans
 OnOff.Text = "off"
 OnOff.TextColor3 = Color3.fromRGB(0, 0, 0)
@@ -41,8 +41,8 @@ TeethReceived.Name = "TeethReceived"
 TeethReceived.Parent = Frame
 TeethReceived.BackgroundColor3 = Color3.fromRGB(255, 219, 12)
 TeethReceived.BorderColor3 = Color3.fromRGB(0, 0, 0)
-TeethReceived.Position = UDim2.new(0.313867241, 0, 0.0695495605, 0)
-TeethReceived.Size = UDim2.new(0, 146, 0, 32)
+TeethReceived.Position = UDim2.new(0.301905364, 0, 0.0979598984, 0)
+TeethReceived.Size = UDim2.new(0, 150, 0, 30)
 TeethReceived.Font = Enum.Font.SourceSans
 TeethReceived.Text = "Teeth received: 0"
 TeethReceived.TextColor3 = Color3.fromRGB(0, 0, 0)
@@ -65,8 +65,8 @@ Webhook.Name = "Webhook"
 Webhook.Parent = Frame
 Webhook.BackgroundColor3 = Color3.fromRGB(255, 219, 12)
 Webhook.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Webhook.Position = UDim2.new(0.0294249933, 0, 0.545426667, 0)
-Webhook.Size = UDim2.new(0, 209, 0, 31)
+Webhook.Position = UDim2.new(0.0451692007, -2, 0.536891162, 0)
+Webhook.Size = UDim2.new(0, 212, 0, 32)
 Webhook.ClearTextOnFocus = false
 Webhook.Font = Enum.Font.SourceSans
 Webhook.PlaceholderColor3 = Color3.fromRGB(193, 162, 9)
@@ -78,7 +78,7 @@ Webhook.TextWrapped = true
 
 -- Scripts:
 
-local function EEAGUU_fake_script() -- OnOff.on/off 
+local function NMFM_fake_script() -- OnOff.on/off 
 	local script = Instance.new('LocalScript', OnOff)
 
 	local afk = script.Parent.Text
@@ -92,8 +92,8 @@ local function EEAGUU_fake_script() -- OnOff.on/off
 	end)
 	
 end
-coroutine.wrap(EEAGUU_fake_script)()
-local function BKWZ_fake_script() -- OnOff.loop.tp 
+coroutine.wrap(NMFM_fake_script)()
+local function RSJXK_fake_script() -- OnOff.loop.tp 
 	local script = Instance.new('LocalScript', OnOff)
 
 	local textButton = script.Parent
@@ -114,8 +114,8 @@ local function BKWZ_fake_script() -- OnOff.loop.tp
 	end)
 	
 end
-coroutine.wrap(BKWZ_fake_script)()
-local function GOCLS_fake_script() -- TeethReceived.teethreceivedscript 
+coroutine.wrap(RSJXK_fake_script)()
+local function HJZQWA_fake_script() -- TeethReceived.teethreceivedscript 
 	local script = Instance.new('LocalScript', TeethReceived)
 
 	local TotalTeeth = game:GetService("Players").LocalPlayer.PlayerGui.CoreGuis.Coins.Scorebox.TextLabel
@@ -129,8 +129,8 @@ local function GOCLS_fake_script() -- TeethReceived.teethreceivedscript
 	TotalTeeth.Changed:Connect(onTextChanged)
 	
 end
-coroutine.wrap(GOCLS_fake_script)()
-local function KLIZYAD_fake_script() -- Webhook.webhookscript 
+coroutine.wrap(HJZQWA_fake_script)()
+local function QAEA_fake_script() -- Webhook.webhookscript 
 	local script = Instance.new('LocalScript', Webhook)
 
 	script.Parent.Parent.TeethReceived:GetPropertyChangedSignal("Text"):Connect(function()
@@ -167,8 +167,8 @@ local function KLIZYAD_fake_script() -- Webhook.webhookscript
 	end)
 	
 end
-coroutine.wrap(KLIZYAD_fake_script)()
-local function BKWTV_fake_script() -- sbautofarm.draggable 
+coroutine.wrap(QAEA_fake_script)()
+local function BDISNDR_fake_script() -- sbautofarm.draggable 
 	local script = Instance.new('LocalScript', sbautofarm)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -210,8 +210,8 @@ local function BKWTV_fake_script() -- sbautofarm.draggable
 		end
 	end)
 end
-coroutine.wrap(BKWTV_fake_script)()
-local function YETVKZV_fake_script() -- sbautofarm.preventkick 
+coroutine.wrap(BDISNDR_fake_script)()
+local function VLXO_fake_script() -- sbautofarm.preventkick 
 	local script = Instance.new('LocalScript', sbautofarm)
 
 	local vu = game:GetService("VirtualUser")
@@ -222,8 +222,8 @@ local function YETVKZV_fake_script() -- sbautofarm.preventkick
 		vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 	end)
 end
-coroutine.wrap(YETVKZV_fake_script)()
-local function SSIWDZ_fake_script() -- sbautofarm.teethscript 
+coroutine.wrap(VLXO_fake_script)()
+local function LJGRB_fake_script() -- sbautofarm.teethscript 
 	local script = Instance.new('LocalScript', sbautofarm)
 
 	wait(1)
@@ -232,4 +232,4 @@ local function SSIWDZ_fake_script() -- sbautofarm.teethscript
 	script:Destroy()
 	
 end
-coroutine.wrap(SSIWDZ_fake_script)()
+coroutine.wrap(LJGRB_fake_script)()
