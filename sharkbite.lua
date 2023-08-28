@@ -41,8 +41,8 @@ TeethReceived.Name = "TeethReceived"
 TeethReceived.Parent = Frame
 TeethReceived.BackgroundColor3 = Color3.fromRGB(255, 219, 12)
 TeethReceived.BorderColor3 = Color3.fromRGB(0, 0, 0)
-TeethReceived.Position = UDim2.new(0.306741923, 0, 0.090133667, 0)
-TeethReceived.Size = UDim2.new(0, 146, 0, 30)
+TeethReceived.Position = UDim2.new(0.313867241, 0, 0.0695495605, 0)
+TeethReceived.Size = UDim2.new(0, 146, 0, 32)
 TeethReceived.Font = Enum.Font.SourceSans
 TeethReceived.Text = "Teeth received: 0"
 TeethReceived.TextColor3 = Color3.fromRGB(0, 0, 0)
@@ -78,7 +78,7 @@ Webhook.TextWrapped = true
 
 -- Scripts:
 
-local function SRCX_fake_script() -- OnOff.on/off 
+local function EEAGUU_fake_script() -- OnOff.on/off 
 	local script = Instance.new('LocalScript', OnOff)
 
 	local afk = script.Parent.Text
@@ -92,8 +92,8 @@ local function SRCX_fake_script() -- OnOff.on/off
 	end)
 	
 end
-coroutine.wrap(SRCX_fake_script)()
-local function WVFCK_fake_script() -- OnOff.loop.tp 
+coroutine.wrap(EEAGUU_fake_script)()
+local function BKWZ_fake_script() -- OnOff.loop.tp 
 	local script = Instance.new('LocalScript', OnOff)
 
 	local textButton = script.Parent
@@ -114,8 +114,8 @@ local function WVFCK_fake_script() -- OnOff.loop.tp
 	end)
 	
 end
-coroutine.wrap(WVFCK_fake_script)()
-local function KCRXYTS_fake_script() -- TeethReceived.teethreceivedscript 
+coroutine.wrap(BKWZ_fake_script)()
+local function GOCLS_fake_script() -- TeethReceived.teethreceivedscript 
 	local script = Instance.new('LocalScript', TeethReceived)
 
 	local TotalTeeth = game:GetService("Players").LocalPlayer.PlayerGui.CoreGuis.Coins.Scorebox.TextLabel
@@ -129,8 +129,8 @@ local function KCRXYTS_fake_script() -- TeethReceived.teethreceivedscript
 	TotalTeeth.Changed:Connect(onTextChanged)
 	
 end
-coroutine.wrap(KCRXYTS_fake_script)()
-local function BMPP_fake_script() -- Webhook.webhookscript 
+coroutine.wrap(GOCLS_fake_script)()
+local function KLIZYAD_fake_script() -- Webhook.webhookscript 
 	local script = Instance.new('LocalScript', Webhook)
 
 	script.Parent.Parent.TeethReceived:GetPropertyChangedSignal("Text"):Connect(function()
@@ -140,10 +140,19 @@ local function BMPP_fake_script() -- Webhook.webhookscript
 		local data = {
 			["embeds"] = {
 				{
-					["title"] = "received teeth: "..TotalTeeth.Text - StartTeeth.Rotation,
-					["description"] = "total teeht: "..TotalTeeth.Text,
-					["type"] = "rich",
-					["color"] = tonumber(0x7269da)
+					["color"] = tonumber(0xd69a00),
+					["fields"] = {
+						{
+							["name"] = "Received teeth:",
+							["value"] = TotalTeeth.Text - StartTeeth.Rotation,
+							["inline"] = false
+						},
+						{
+							["name"] = "Total teeth:",
+							["value"] = TotalTeeth.Text,
+							["inline"] = false
+						}
+					}
 				}
 			}
 		}
@@ -158,8 +167,8 @@ local function BMPP_fake_script() -- Webhook.webhookscript
 	end)
 	
 end
-coroutine.wrap(BMPP_fake_script)()
-local function QOBKWN_fake_script() -- sbautofarm.draggable 
+coroutine.wrap(KLIZYAD_fake_script)()
+local function BKWTV_fake_script() -- sbautofarm.draggable 
 	local script = Instance.new('LocalScript', sbautofarm)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -201,8 +210,8 @@ local function QOBKWN_fake_script() -- sbautofarm.draggable
 		end
 	end)
 end
-coroutine.wrap(QOBKWN_fake_script)()
-local function EBXKHA_fake_script() -- sbautofarm.preventkick 
+coroutine.wrap(BKWTV_fake_script)()
+local function YETVKZV_fake_script() -- sbautofarm.preventkick 
 	local script = Instance.new('LocalScript', sbautofarm)
 
 	local vu = game:GetService("VirtualUser")
@@ -213,8 +222,8 @@ local function EBXKHA_fake_script() -- sbautofarm.preventkick
 		vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 	end)
 end
-coroutine.wrap(EBXKHA_fake_script)()
-local function ESOQL_fake_script() -- sbautofarm.teethscript 
+coroutine.wrap(YETVKZV_fake_script)()
+local function SSIWDZ_fake_script() -- sbautofarm.teethscript 
 	local script = Instance.new('LocalScript', sbautofarm)
 
 	wait(1)
@@ -223,4 +232,4 @@ local function ESOQL_fake_script() -- sbautofarm.teethscript
 	script:Destroy()
 	
 end
-coroutine.wrap(ESOQL_fake_script)()
+coroutine.wrap(SSIWDZ_fake_script)()
