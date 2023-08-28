@@ -13,6 +13,7 @@ local OnOff = Instance.new("TextButton")
 local TeethReceived = Instance.new("TextLabel")
 local teeth = Instance.new("TextLabel")
 local Webhook = Instance.new("TextBox")
+local oldteeth = Instance.new("TextLabel")
 
 --Properties:
 
@@ -76,46 +77,46 @@ Webhook.TextColor3 = Color3.fromRGB(0, 0, 0)
 Webhook.TextSize = 14.000
 Webhook.TextWrapped = true
 
+oldteeth.Name = "oldteeth"
+oldteeth.Parent = Webhook
+oldteeth.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+oldteeth.BorderColor3 = Color3.fromRGB(0, 0, 0)
+oldteeth.BorderSizePixel = 0
+oldteeth.Visible = false
+oldteeth.Font = Enum.Font.SourceSans
+oldteeth.TextColor3 = Color3.fromRGB(0, 0, 0)
+oldteeth.TextSize = 14.000
+
 -- Scripts:
 
-local function NMFM_fake_script() -- OnOff.on/off 
-	local script = Instance.new('LocalScript', OnOff)
-
-	local afk = script.Parent.Text
-	
-	script.Parent.MouseButton1Click:Connect(function()
-		if script.Parent.Text == "off" then
-			script.Parent.Text = "on"
-		else
-			script.Parent.Text = "off"
-		end
-	end)
-	
-end
-coroutine.wrap(NMFM_fake_script)()
-local function RSJXK_fake_script() -- OnOff.loop.tp 
+local function JVPY_fake_script() -- OnOff.loop.tp 
 	local script = Instance.new('LocalScript', OnOff)
 
 	local textButton = script.Parent
 	local isRunning = false
 	
+	
 	textButton.MouseButton1Click:Connect(function()
-		if textButton.Text == "on" then
-			if not isRunning then
-				isRunning = true
-				while isRunning and textButton.Text == "on" do
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-8.05339909, 464.527893, 31.5693302, 0.490018576, 4.31568949e-08, 0.871711969, 2.26567209e-08, 1, -6.2244311e-08, -0.871711969, 5.02510034e-08, 0.490018576)
-					wait(4)
-				end
-			else
-				isRunning = false
-			end
+		if textButton.Text ~= "on" then
+			textButton.Text = "on"
+			isRunning = true
+		else
+			textButton.Text = "off"
+			isRunning = false
 		end
 	end)
 	
+	
+	textButton.MouseButton1Click:Connect(function()
+		wait(1)
+		while textButton.Text == "on" do
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-8.05339909, 464.527893, 31.5693302, 0.490018576, 4.31568949e-08, 0.871711969, 2.26567209e-08, 1, -6.2244311e-08, -0.871711969, 5.02510034e-08, 0.490018576)
+			wait(2)
+		end
+	end)
 end
-coroutine.wrap(RSJXK_fake_script)()
-local function HJZQWA_fake_script() -- TeethReceived.teethreceivedscript 
+coroutine.wrap(JVPY_fake_script)()
+local function KZQXXIZ_fake_script() -- TeethReceived.teethreceivedscript 
 	local script = Instance.new('LocalScript', TeethReceived)
 
 	local TotalTeeth = game:GetService("Players").LocalPlayer.PlayerGui.CoreGuis.Coins.Scorebox.TextLabel
@@ -129,13 +130,25 @@ local function HJZQWA_fake_script() -- TeethReceived.teethreceivedscript
 	TotalTeeth.Changed:Connect(onTextChanged)
 	
 end
-coroutine.wrap(HJZQWA_fake_script)()
-local function QAEA_fake_script() -- Webhook.webhookscript 
+coroutine.wrap(KZQXXIZ_fake_script)()
+local function UVXSFD_fake_script() -- teeth.teethscript 
+	local script = Instance.new('LocalScript', teeth)
+
+	script.Parent.Rotation = game:GetService("Players").LocalPlayer.PlayerGui.CoreGuis.Coins.Scorebox.TextLabel.Text
+	wait(1)
+	script:Destroy()
+	
+end
+coroutine.wrap(UVXSFD_fake_script)()
+local function IBNDB_fake_script() -- Webhook.webhookscript 
 	local script = Instance.new('LocalScript', Webhook)
 
+	script.Parent.oldteeth.Rotation = game:GetService("Players").LocalPlayer.PlayerGui.CoreGuis.Coins.Scorebox.TextLabel.Text
+	
 	script.Parent.Parent.TeethReceived:GetPropertyChangedSignal("Text"):Connect(function()
 		local TotalTeeth = game:GetService("Players").LocalPlayer.PlayerGui.CoreGuis.Coins.Scorebox.TextLabel
 		local StartTeeth = script.Parent.Parent.TeethReceived.teeth
+		local OldTeeth = script.Parent.oldteeth
 		local url = script.Parent.Text
 		local data = {
 			["embeds"] = {
@@ -143,13 +156,23 @@ local function QAEA_fake_script() -- Webhook.webhookscript
 					["color"] = tonumber(0xd69a00),
 					["fields"] = {
 						{
-							["name"] = "Received teeth:",
+							["name"] = "Earned this time:",
+							["value"] = TotalTeeth.Text - OldTeeth.Rotation,
+							["inline"] = false
+						},
+						{
+							["name"] = "Total earned:",
 							["value"] = TotalTeeth.Text - StartTeeth.Rotation,
 							["inline"] = false
 						},
 						{
 							["name"] = "Total teeth:",
 							["value"] = TotalTeeth.Text,
+							["inline"] = false
+						},
+						{
+							["name"] = "Time:",
+							["value"] = os.date(),
 							["inline"] = false
 						}
 					}
@@ -164,11 +187,12 @@ local function QAEA_fake_script() -- Webhook.webhookscript
 		request = http_request or request or HttpPost or syn.request
 		local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
 		request(abcdef)
+		script.Parent.oldteeth.Rotation = game:GetService("Players").LocalPlayer.PlayerGui.CoreGuis.Coins.Scorebox.TextLabel.Text
 	end)
 	
 end
-coroutine.wrap(QAEA_fake_script)()
-local function BDISNDR_fake_script() -- sbautofarm.draggable 
+coroutine.wrap(IBNDB_fake_script)()
+local function KHCTZYD_fake_script() -- sbautofarm.draggable 
 	local script = Instance.new('LocalScript', sbautofarm)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -210,8 +234,8 @@ local function BDISNDR_fake_script() -- sbautofarm.draggable
 		end
 	end)
 end
-coroutine.wrap(BDISNDR_fake_script)()
-local function VLXO_fake_script() -- sbautofarm.preventkick 
+coroutine.wrap(KHCTZYD_fake_script)()
+local function UYCUTU_fake_script() -- sbautofarm.preventkick 
 	local script = Instance.new('LocalScript', sbautofarm)
 
 	local vu = game:GetService("VirtualUser")
@@ -222,14 +246,4 @@ local function VLXO_fake_script() -- sbautofarm.preventkick
 		vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 	end)
 end
-coroutine.wrap(VLXO_fake_script)()
-local function LJGRB_fake_script() -- sbautofarm.teethscript 
-	local script = Instance.new('LocalScript', sbautofarm)
-
-	wait(1)
-	script.Parent.Frame.TeethReceived.teeth.Rotation = game:GetService("Players").LocalPlayer.PlayerGui.CoreGuis.Coins.Scorebox.TextLabel.Text
-	wait(1)
-	script:Destroy()
-	
-end
-coroutine.wrap(LJGRB_fake_script)()
+coroutine.wrap(UYCUTU_fake_script)()
