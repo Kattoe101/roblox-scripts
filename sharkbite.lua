@@ -2,12 +2,12 @@
 -- made by kattoe101 (github)
 -- if u have any questions, suggestions or feedback you can dm me on discord (kattoe)
 -- created: 23-08-2023
--- updated: 28-08-2023
+-- updated: 30-08-2023
 
 
 -- Instances:
 
-local sbautofarm = Instance.new("ScreenGui")
+local SbAutofarm = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
 local OnOff = Instance.new("TextButton")
 local TeethReceived = Instance.new("TextLabel")
@@ -17,11 +17,11 @@ local oldteeth = Instance.new("TextLabel")
 
 --Properties:
 
-sbautofarm.Name = "sb.autofarm"
-sbautofarm.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-sbautofarm.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+SbAutofarm.Name = "Sb-Autofarm"
+SbAutofarm.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+SbAutofarm.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
-Frame.Parent = sbautofarm
+Frame.Parent = SbAutofarm
 Frame.BackgroundColor3 = Color3.fromRGB(235, 152, 35)
 Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 Frame.Position = UDim2.new(0.398121893, 0, 0.380138546, 0)
@@ -89,7 +89,7 @@ oldteeth.TextSize = 14.000
 
 -- Scripts:
 
-local function JVPY_fake_script() -- OnOff.loop.tp 
+local function EXUNB_fake_script() -- OnOff.loop.tp 
 	local script = Instance.new('LocalScript', OnOff)
 
 	local textButton = script.Parent
@@ -109,14 +109,14 @@ local function JVPY_fake_script() -- OnOff.loop.tp
 	
 	textButton.MouseButton1Click:Connect(function()
 		wait(1)
-		while textButton.Text == "on" do
+		while isRunning do
 			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-8.05339909, 464.527893, 31.5693302, 0.490018576, 4.31568949e-08, 0.871711969, 2.26567209e-08, 1, -6.2244311e-08, -0.871711969, 5.02510034e-08, 0.490018576)
 			wait(2)
 		end
 	end)
 end
-coroutine.wrap(JVPY_fake_script)()
-local function KZQXXIZ_fake_script() -- TeethReceived.teethreceivedscript 
+coroutine.wrap(EXUNB_fake_script)()
+local function NHLYV_fake_script() -- TeethReceived.teethreceivedscript 
 	local script = Instance.new('LocalScript', TeethReceived)
 
 	local TotalTeeth = game:GetService("Players").LocalPlayer.PlayerGui.CoreGuis.Coins.Scorebox.TextLabel
@@ -130,8 +130,8 @@ local function KZQXXIZ_fake_script() -- TeethReceived.teethreceivedscript
 	TotalTeeth.Changed:Connect(onTextChanged)
 	
 end
-coroutine.wrap(KZQXXIZ_fake_script)()
-local function UVXSFD_fake_script() -- teeth.teethscript 
+coroutine.wrap(NHLYV_fake_script)()
+local function RPAIXU_fake_script() -- teeth.teethscript 
 	local script = Instance.new('LocalScript', teeth)
 
 	script.Parent.Rotation = game:GetService("Players").LocalPlayer.PlayerGui.CoreGuis.Coins.Scorebox.TextLabel.Text
@@ -139,8 +139,8 @@ local function UVXSFD_fake_script() -- teeth.teethscript
 	script:Destroy()
 	
 end
-coroutine.wrap(UVXSFD_fake_script)()
-local function IBNDB_fake_script() -- Webhook.webhookscript 
+coroutine.wrap(RPAIXU_fake_script)()
+local function VDGU_fake_script() -- Webhook.webhookscript 
 	local script = Instance.new('LocalScript', Webhook)
 
 	script.Parent.oldteeth.Rotation = game:GetService("Players").LocalPlayer.PlayerGui.CoreGuis.Coins.Scorebox.TextLabel.Text
@@ -151,6 +151,7 @@ local function IBNDB_fake_script() -- Webhook.webhookscript
 		local OldTeeth = script.Parent.oldteeth
 		local url = script.Parent.Text
 		local data = {
+			
 			["embeds"] = {
 				{
 					["color"] = tonumber(0xd69a00),
@@ -191,9 +192,9 @@ local function IBNDB_fake_script() -- Webhook.webhookscript
 	end)
 	
 end
-coroutine.wrap(IBNDB_fake_script)()
-local function KHCTZYD_fake_script() -- sbautofarm.draggable 
-	local script = Instance.new('LocalScript', sbautofarm)
+coroutine.wrap(VDGU_fake_script)()
+local function QLDPC_fake_script() -- SbAutofarm.draggable 
+	local script = Instance.new('LocalScript', SbAutofarm)
 
 	local UserInputService = game:GetService("UserInputService")
 	
@@ -234,9 +235,9 @@ local function KHCTZYD_fake_script() -- sbautofarm.draggable
 		end
 	end)
 end
-coroutine.wrap(KHCTZYD_fake_script)()
-local function UYCUTU_fake_script() -- sbautofarm.preventkick 
-	local script = Instance.new('LocalScript', sbautofarm)
+coroutine.wrap(QLDPC_fake_script)()
+local function HYQKE_fake_script() -- SbAutofarm.preventkick 
+	local script = Instance.new('LocalScript', SbAutofarm)
 
 	local vu = game:GetService("VirtualUser")
 	
@@ -246,4 +247,4 @@ local function UYCUTU_fake_script() -- sbautofarm.preventkick
 		vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 	end)
 end
-coroutine.wrap(UYCUTU_fake_script)()
+coroutine.wrap(HYQKE_fake_script)()
