@@ -2,7 +2,7 @@
 -- made by kattoe101 (github)
 -- if u have any questions, suggestions or feedback you can dm me on discord (kattoe)
 -- created: 23-08-2023
--- updated: 30-08-2023
+-- updated: 01-09-2023
 
 
 -- Instances:
@@ -71,7 +71,7 @@ Webhook.Size = UDim2.new(0, 212, 0, 32)
 Webhook.ClearTextOnFocus = false
 Webhook.Font = Enum.Font.SourceSans
 Webhook.PlaceholderColor3 = Color3.fromRGB(193, 162, 9)
-Webhook.PlaceholderText = "Webhook url:"
+Webhook.PlaceholderText = "Webhook url: (leave blank for config)"
 Webhook.Text = ""
 Webhook.TextColor3 = Color3.fromRGB(0, 0, 0)
 Webhook.TextSize = 14.000
@@ -89,7 +89,7 @@ oldteeth.TextSize = 14.000
 
 -- Scripts:
 
-local function EXUNB_fake_script() -- OnOff.loop.tp 
+local function BSWJETE_fake_script() -- OnOff.loop.tp 
 	local script = Instance.new('LocalScript', OnOff)
 
 	local textButton = script.Parent
@@ -115,8 +115,8 @@ local function EXUNB_fake_script() -- OnOff.loop.tp
 		end
 	end)
 end
-coroutine.wrap(EXUNB_fake_script)()
-local function NHLYV_fake_script() -- TeethReceived.teethreceivedscript 
+coroutine.wrap(BSWJETE_fake_script)()
+local function ELZP_fake_script() -- TeethReceived.teethreceivedscript 
 	local script = Instance.new('LocalScript', TeethReceived)
 
 	local TotalTeeth = game:GetService("Players").LocalPlayer.PlayerGui.CoreGuis.Coins.Scorebox.TextLabel
@@ -130,8 +130,8 @@ local function NHLYV_fake_script() -- TeethReceived.teethreceivedscript
 	TotalTeeth.Changed:Connect(onTextChanged)
 	
 end
-coroutine.wrap(NHLYV_fake_script)()
-local function RPAIXU_fake_script() -- teeth.teethscript 
+coroutine.wrap(ELZP_fake_script)()
+local function OQAH_fake_script() -- teeth.teethscript 
 	local script = Instance.new('LocalScript', teeth)
 
 	script.Parent.Rotation = game:GetService("Players").LocalPlayer.PlayerGui.CoreGuis.Coins.Scorebox.TextLabel.Text
@@ -139,8 +139,8 @@ local function RPAIXU_fake_script() -- teeth.teethscript
 	script:Destroy()
 	
 end
-coroutine.wrap(RPAIXU_fake_script)()
-local function VDGU_fake_script() -- Webhook.webhookscript 
+coroutine.wrap(OQAH_fake_script)()
+local function ZRLYCHK_fake_script() -- Webhook.webhookscript 
 	local script = Instance.new('LocalScript', Webhook)
 
 	script.Parent.oldteeth.Rotation = game:GetService("Players").LocalPlayer.PlayerGui.CoreGuis.Coins.Scorebox.TextLabel.Text
@@ -148,8 +148,15 @@ local function VDGU_fake_script() -- Webhook.webhookscript
 	script.Parent.Parent.TeethReceived:GetPropertyChangedSignal("Text"):Connect(function()
 		local TotalTeeth = game:GetService("Players").LocalPlayer.PlayerGui.CoreGuis.Coins.Scorebox.TextLabel
 		local StartTeeth = script.Parent.Parent.TeethReceived.teeth
-		local OldTeeth = script.Parent.oldteeth
-		local url = script.Parent.Text
+		local oldTeeth = script.Parent.oldteeth
+		local url = ""
+		local plr = game:GetService("Players").LocalPlayer
+		local config = readfile("kattoehub/config.txt")
+		if config:match("https://discord.com/api/webhooks/") then
+			url = config
+		else
+			url = script.Parent.Text
+		end
 		local data = {
 			
 			["embeds"] = {
@@ -158,7 +165,7 @@ local function VDGU_fake_script() -- Webhook.webhookscript
 					["fields"] = {
 						{
 							["name"] = "Earned this time:",
-							["value"] = TotalTeeth.Text - OldTeeth.Rotation,
+							["value"] = TotalTeeth.Text - oldTeeth.Rotation,
 							["inline"] = false
 						},
 						{
@@ -192,8 +199,18 @@ local function VDGU_fake_script() -- Webhook.webhookscript
 	end)
 	
 end
-coroutine.wrap(VDGU_fake_script)()
-local function QLDPC_fake_script() -- SbAutofarm.draggable 
+coroutine.wrap(ZRLYCHK_fake_script)()
+local function XZBZU_fake_script() -- Webhook.config 
+	local script = Instance.new('LocalScript', Webhook)
+
+	if isfolder("kattoehub") and isfile("kattoehub/config.txt") then
+		else
+		makefolder("kattoehub")
+		writefile("kattoehub/config.txt", "Just paste your webhook link here. It will be saved for the next time. (make sure to save the file lol)")
+	end
+end
+coroutine.wrap(XZBZU_fake_script)()
+local function IHHKB_fake_script() -- SbAutofarm.draggable 
 	local script = Instance.new('LocalScript', SbAutofarm)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -235,8 +252,8 @@ local function QLDPC_fake_script() -- SbAutofarm.draggable
 		end
 	end)
 end
-coroutine.wrap(QLDPC_fake_script)()
-local function HYQKE_fake_script() -- SbAutofarm.preventkick 
+coroutine.wrap(IHHKB_fake_script)()
+local function THKZB_fake_script() -- SbAutofarm.preventkick 
 	local script = Instance.new('LocalScript', SbAutofarm)
 
 	local vu = game:GetService("VirtualUser")
@@ -247,4 +264,4 @@ local function HYQKE_fake_script() -- SbAutofarm.preventkick
 		vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 	end)
 end
-coroutine.wrap(HYQKE_fake_script)()
+coroutine.wrap(THKZB_fake_script)()
